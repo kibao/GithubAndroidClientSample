@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Github Client</string>
+    <string name="organization">Organization</string>
+</resources>
