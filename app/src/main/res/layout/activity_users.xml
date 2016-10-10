@@ -21,7 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <com.github.rahatarmanahmed.cpv.CircularProgressView
             android:id="@+id/loadingView"
             android:layout_gravity="center"
@@ -35,6 +34,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/user_item"/>
+
+        <include layout="@layout/view_loading_error"/>
+
     </FrameLayout>
 
 </LinearLayout>

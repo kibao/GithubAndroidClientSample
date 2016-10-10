@@ -26,6 +26,7 @@ public class UsersActivity extends AppCompatActivity {
 
     private RecyclerView list;
     private CircularProgressView loadingView;
+    private View errorView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class UsersActivity extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
         loadingView = (CircularProgressView) findViewById(R.id.loadingView);
+        errorView = findViewById(R.id.errorView);
         list = (RecyclerView) findViewById(R.id.contentView);
         list.setAdapter(adapter);
         list.setLayoutManager(new LinearLayoutManager(this));
@@ -45,11 +47,19 @@ public class UsersActivity extends AppCompatActivity {
     public void showLoading() {
         loadingView.setVisibility(View.VISIBLE);
         list.setVisibility(View.INVISIBLE);
+        errorView.setVisibility(View.INVISIBLE);
     }
 
     public void showData() {
         list.setVisibility(View.VISIBLE);
         loadingView.setVisibility(View.GONE);
+        errorView.setVisibility(View.GONE);
+    }
+
+    public void showError() {
+        loadingView.setVisibility(View.INVISIBLE);
+        list.setVisibility(View.INVISIBLE);
+        errorView.setVisibility(View.VISIBLE);
     }
 
     private void injectDependencies() {

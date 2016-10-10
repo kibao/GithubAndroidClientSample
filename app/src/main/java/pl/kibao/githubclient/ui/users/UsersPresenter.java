@@ -31,7 +31,7 @@ public class UsersPresenter {
             .subscribe(users -> {
                 view.setData(users);
                 view.showData();
-            });
+            }, throwable -> view.showError());
     }
 
     public void unsubscribe() {

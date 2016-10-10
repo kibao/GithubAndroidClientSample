@@ -23,6 +23,7 @@ import pl.kibao.githubclient.data.User;
 import pl.kibao.githubclient.data.UserService;
 import pl.kibao.githubclient.ui.users.UsersActivity;
 import pl.kibao.githubclient.utils.TestUtils;
+import retrofit2.adapter.rxjava.HttpException;
 import rx.subjects.PublishSubject;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -64,6 +65,7 @@ public class UsersScreen {
     @Test
     public void shouldShowOnlyLoadingViewDuringLoading() {
         viewIsNotVisible(R.id.loadingView, android.R.id.content);
+        viewIsNotVisible(R.id.errorView, android.R.id.content);
         viewIsVisible(R.id.contentView, android.R.id.content);
     }
 
@@ -75,6 +77,7 @@ public class UsersScreen {
         TestUtils.waitFor(400);
 
         viewIsNotVisible(R.id.loadingView, android.R.id.content);
+        viewIsNotVisible(R.id.errorView, android.R.id.content);
         viewIsVisible(R.id.contentView, android.R.id.content);
 
         onView(withRecyclerView(R.id.contentView).atPositionOnView(0, R.id.name))
@@ -83,6 +86,15 @@ public class UsersScreen {
             .check(matches(withText("john.doe")));
         onView(withRecyclerView(R.id.contentView).atPositionOnView(2, R.id.name))
             .check(matches(withText("MyOrg")));
+    }
+
+    @Test
+    public void shouldShowErrorViewOnRemoteError() {
+        usersSubject.onError(new Exception("Remote exception"));
+
+        viewIsNotVisible(R.id.loadingView, android.R.id.content);
+        viewIsNotVisible(R.id.contentView, android.R.id.content);
+        viewIsVisible(R.id.errorView, android.R.id.content);
     }
 
     private List<User> validUsersResult() {
