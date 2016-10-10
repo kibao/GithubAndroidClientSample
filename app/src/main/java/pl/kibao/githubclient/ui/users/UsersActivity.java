@@ -42,21 +42,14 @@ public class UsersActivity extends AppCompatActivity {
         presenter.loadUserList();
     }
 
-    public void setLoading(boolean loading) {
-        if (!loading) {
-            list.setVisibility(View.VISIBLE);
-            loadingView.setVisibility(View.GONE);
-            return;
-        }
+    public void showLoading() {
+        loadingView.setVisibility(View.VISIBLE);
+        list.setVisibility(View.INVISIBLE);
+    }
 
-
-        if (adapter.getItemCount() > 0) {
-            list.setVisibility(View.VISIBLE);
-
-        } else {
-            loadingView.setVisibility(View.VISIBLE);
-            list.setVisibility(View.INVISIBLE);
-        }
+    public void showData() {
+        list.setVisibility(View.VISIBLE);
+        loadingView.setVisibility(View.GONE);
     }
 
     private void injectDependencies() {

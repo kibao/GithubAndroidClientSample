@@ -22,7 +22,7 @@ public class UsersPresenter {
     }
 
     public void loadUserList() {
-        view.setLoading(true);
+        view.showLoading();
         unsubscribe();
         subscription = userService.users()
             .zipWith(Observable.timer(300, TimeUnit.MILLISECONDS), (users, aLong) -> users)
@@ -30,7 +30,7 @@ public class UsersPresenter {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(users -> {
                 view.setData(users);
-                view.setLoading(false);
+                view.showData();
             });
     }
 
