@@ -7,7 +7,6 @@ public class User {
     public String username;
     public String email;
     public String name;
-    public String url;
     public String avatarUrl;
     public String type;
 

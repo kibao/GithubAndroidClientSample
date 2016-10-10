@@ -97,7 +97,6 @@ public class UsersScreen {
         User user = new User();
         user.id = id;
         user.username = username;
-        user.url = "https://api.github/users/" + username;
         user.avatarUrl = "https://avatars.githubusercontent.com/u/" + id + "?v=3";
         user.type = type;
         return user;
