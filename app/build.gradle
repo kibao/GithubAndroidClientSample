@@ -27,9 +27,18 @@ android {
     }
 
     buildTypes {
+        debug {
+            minifyEnabled true
+            // Uses new built-in shrinker http://tools.android.com/tech-docs/new-build-system/built-in-shrinker
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro', 'proguard-rules-debug.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-test-rules.pro'
+        }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-test-rules.pro'
         }
     }
 
