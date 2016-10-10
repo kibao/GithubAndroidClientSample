@@ -1,8 +1,6 @@
 package pl.kibao.githubclient;
 
 import android.app.Application;
-import android.app.Service;
-import android.view.LayoutInflater;
 
 import javax.inject.Singleton;
 

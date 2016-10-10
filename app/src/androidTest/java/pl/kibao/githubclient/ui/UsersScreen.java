@@ -23,7 +23,6 @@ import pl.kibao.githubclient.data.User;
 import pl.kibao.githubclient.data.UserService;
 import pl.kibao.githubclient.ui.users.UsersActivity;
 import pl.kibao.githubclient.utils.TestUtils;
-import retrofit2.adapter.rxjava.HttpException;
 import rx.subjects.PublishSubject;
 
 import static android.support.test.espresso.Espresso.onView;
